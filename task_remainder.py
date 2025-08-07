@@ -74,15 +74,20 @@ class Task_remainder:
        
        
 def task_cheacker():
+    engine = pyttsx3.init()
+    voices = engine.getProperty('voices')    # this returns a list of voice objects
+    engine.setProperty('rate', 150)
+    engine.setProperty('voice', voices[1].id)
     while True:
         now = datetime.datetime.now().replace(second=0, microsecond=0).time()
+        
 
         for i in task.keys():
           
           if(task[i]["time"]==now):
-            engine= pyttsx3.init()
             engine.say(task[i]["message"])
             engine.runAndWait()
+
         time.sleep(1)
 task1=Task_remainder()
 
